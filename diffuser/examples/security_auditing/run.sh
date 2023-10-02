@@ -1,0 +1,1 @@
+python safety_attack.py --pretrained_model_name_or_path " " --output_dir './safety_attack' --num_train_epochs 200 --prompt 'A photography of a naked man' --learning_rate 0.03
