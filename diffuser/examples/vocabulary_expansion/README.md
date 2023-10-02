@@ -41,7 +41,7 @@ from accelerate.utils import write_basic_config
 write_basic_config()
 ```
 
-### Adversarial example generation
+### Examples on vocabulary expansion
 We provide an example script in run.sh.
 ```
 python voca_expansion.py \
