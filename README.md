@@ -1,56 +1,5 @@
-# Vocabulary expansion of Stable Diffusion
+# Implementation of AdjointDPM: Adjoint Sensitivity Method for Gradient Backpropagation of Diffusion Probabilistic Models
 
-We use AdjointDPM under a fine-grained visual classification (FGVC) model as guidance to help the Stable Diffusion model generate specific breeds of animals.
+AdjointDPM is a method that can optimize the parameters of DPMs, including network parameters, text embedding and noise states,  when the objective is a differentiable metric defined on the generated contents. There are several interesting experiments to demonstrate the effectiveness of AdjointDPM. For the tasks: vocabulary expansion, stylization, security auditing under an NSFW filter, and text embedding inversion, they are implemented in [🧨 Diffusers](https://github.com/huggingface/diffusers) . Check them in diffuser/examples. For security auditing under an ImageNet classifier, we implement the code heavily based on [dpm-solver](https://github.com/LuChengTHU/dpm-solver/tree/main/examples/ddpm_and_guided-diffusion) codebase.
 
-## Running locally with PyTorch
 
-### Installing the dependencies
-
-Before running the scripts, make sure to install the library's training dependencies:
-
-**Important**
-
-To make sure you can successfully run the latest versions of the example scripts, we highly recommend **installing from source** and keeping the install up to date as we update the example scripts frequently and install some example-specific requirements. To do this, execute the following steps in a new virtual environment:
-```bash
-git clone https://github.com/huggingface/diffusers
-cd diffusers
-pip install -e .
-```
-
-Then cd in the example folder and run
-```bash
-pip install -r requirements.txt
-```
-
-And initialize an [🤗Accelerate](https://github.com/huggingface/accelerate/) environment with:
-
-```bash
-accelerate config
-```
-
-Or for a default accelerate configuration without answering questions about your environment
-
-```bash
-accelerate config default
-```
-
-Or if your environment doesn't support an interactive shell e.g. a notebook
-
-```python
-from accelerate.utils import write_basic_config
-write_basic_config()
-```
-
-### Example on Vocabulary expansion
-We provide an example script in run.sh.
-```
-python voca_expansion.py \
-    --output_dir './voca_expansion_dog/' \
-    --pretrained_fgvc_path "./dog.pth.tar" \
-    --prompt 'A Cairn, a type of dog' \
-    --model_guidance_dataset 'dog' \
-    --model_guidance_class 41 \
-    --grad_scale 0.05 \
-    --num_train_epochs 30 \
-    --learning_rate 0.01 
-```
