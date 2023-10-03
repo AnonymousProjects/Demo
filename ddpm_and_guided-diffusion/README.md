@@ -18,9 +18,9 @@ Some checkpoints will be automatically downloaded in `~/ddpm_ckpt/`, please chec
 | Imagenet512_guided.yml | Please download [guided-diffusion diffusion checkpoint](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/512x512_diffusion.pt) in `~/ddpm_ckpt/imagenet512/512x512_diffusion.pt`, and [guided-diffusion classifier checkpoint](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/512x512_classifier.pt) in `~/ddpm_ckpt/imagenet512/512x512_classifier.pt`. | [Download](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/ref_batches/imagenet/512/VIRTUAL_imagenet512.npz) in `./fid_stats/VIRTUAL_imagenet512.npz` |
 
 ## Example Script
-We provide an example scirpt in `sample.sh`:
+We provide an example scirpt in `attack.sh`:
 
 - Adversarial attack on Classifier-guided sampling on ImageNet128 with guidance scale `8.0`. 
 
-Note: for adversarial attack, choose the `test` mode and set `fixed_class` to be the class number of ImageNet you want to attack.
+Note: for adversarial attack, choose the `attack` mode and set `fixed_class` to be the class number of ImageNet you want to attack.
 
